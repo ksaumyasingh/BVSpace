@@ -1,0 +1,36 @@
+<?php
+ini_set('error_reporting', 0);
+ini_set('display_errors', 0);
+?>
+
+<?php
+$ques_id=$_POST['questionID'];
+$answer=$_POST['answer'];
+session_start();
+if(isset($answer)){
+    $server = "localhost";
+    $username = "root";
+    $password = "";
+
+    $con = mysqli_connect($server, $username, $password);
+
+    if(!$con){
+        die("connection to this database failed due to".mysqli_connect_error());
+    }     
+    $email= $_SESSION['emailId'];
+    $sql="INSERT INTO `bvspace`.`answer` (`ques_id`,`ans`, `upvote` ,`date_posted`,`id`) VALUES ('$ques_id','$answer' , 0 , current_timestamp(),'$email');";
+    //echo $sql;
+    if($con->query($sql) == true){
+        //echo "Successfully inserted";
+        echo '<script>alert("Answer submitted Successfully"); window.location.href="display.php"</script>';
+      
+
+    }
+    else{
+        echo "ERROR:$sql <br> $conn->error";
+    }
+
+    $con->close();
+}
+?>
+
