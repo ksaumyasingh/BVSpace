@@ -1,185 +1,106 @@
 <?php
-$uname=$_POST['username'];
-$password=$_POST['password'];
-echo $uname;
-echo $password;
-$uname=1;
-$con = mysqli_connect("localhost", "root", "", "bvspace");
-$selectquery= "SELECT * FROM users WHERE id=$uname";
-$query= mysqli_query($con, $selectquery);
-while($res=mysqli_fetch_assoc($query))
-{
-    
-    $pass=$res['password'];
-    echo $pass;
-    echo $res['email'];
-    if($password == $pass ){
-      echo "<script>alert('User Logged into bvspace')</script>";
-      header("location: homepage.php");
-    }else{
-      echo '<script>alert("oopsy! password incorrect"); window.location.href="login.html"</script>';
-    }
 
+require_once "config.php";
+
+session_start();
+
+error_reporting(0);
+if (isset($_POST['submit'])) {
+	$email = $_POST['email'];
+	$password = md5($_POST['password']);
+
+	$sql = "SELECT * FROM users WHERE email='$email' AND password='$password'";
+	$result = mysqli_query($conn, $sql);
+	if ($result->num_rows > 0) {
+		$row = mysqli_fetch_assoc($result);
+		$_SESSION['email'] = $row['email'];
+                $_SESSION['id'] = $row['id'];
+                $_SESSION['loggedin'] =true;
+		header("Location: index.php");
+	} else {
+		echo "<script>alert('Woops! Email or Password is Wrong.')</script>";
+	}
 }
-echo '<script>alert("Oopsy!unregistered email id"); window.location.href="login.html"</script>';
-?>
+// echo "#"; 
+//    if(isset($_POST['submit'])){
+//       $email=$_POST['email'];
+//       $password=$_POST['password'];
+
+//       echo "5";
+
+//         $con = mysqli_connect("localhost","root","","bvspace");
+//         echo "7";
+//         $selectquery= "SELECT * FROM users WHERE email=$email";
+//         $query= mysqli_query($con, $selectquery);
+//         $nums= mysqli_num_rows($query);
+//         echo "6";
+//         //echo $nums."<br>";
+//         while($res=mysqli_fetch_assoc($query))
+//         {
+//           $pass=$res["password"];
+//             if($password == $pass ){
+//               echo "<script>alert('User Logged into bvspace')</script>";
+//               header("location: index.php");
+//             }else{
+//               echo "<script>alert('oopsy! password incorrect')</script>";
+//               header("location: login.php");
+//             }
+          
+//         }
+//         echo "<script>alert('Oopsy! First Register yourself.')</script>";
+//         header("location: login.php");
+//       echo "4";
+//     }
+ ?>
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-<?php // 
-//require_once "config.php";
-//
-////This script will handle login
-//session_start();
-////if(isset($SESSION['uname'])){
-////    header("location: homepage.php");
-////    echo $SESSION['uname']." ".$SESSION['pass'];
-////    exit;
-////}
-//// check if the user is already logged in
-////if(isset($_POST['username']))
-////{
-////    header("location: homepage.php");
-////    exit;
-////}
-//
-//
-////$username = $password = "";
-////$err = "";
-//echo $_POST['username'];
-//echo $_POST['password'];
-//// if request method is post
-//if ($_SERVER['REQUEST_METHOD'] == "POST"){
-//    if(empty(trim($_POST['username'])) || empty(trim($_POST['password'])))
-//    {
-//        $err = "Please enter username + password";
-//    }
-//    else{
-//        $username = trim($_POST['username']);
-//        $password = trim($_POST['password']);
-//    }
-//
-//
-//if(empty($err))
-//{
-//    $sql = "SELECT username, password FROM users WHERE username = ?";
-//    $stmt = mysqli_prepare($conn, $sql);
-//    mysqli_stmt_bind_param($stmt, "s", $param_username);
-//    $param_username = $username;
-//    
-//    
-//    // Try to execute this statement
-//    if(mysqli_stmt_execute($stmt)){
-//        mysqli_stmt_store_result($stmt);
-//        if(mysqli_stmt_num_rows($stmt) == 1)
-//                {
-//                    mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
-//                    if(mysqli_stmt_fetch($stmt))
-//                    {
-//                        if(password_verify($password, $hashed_password))
-//                        {
-//                            // this means the password is corrct. Allow user to login
-////                            session_start();
-////                            $SESSION["uname"] = $username;
-////                            $_SESSION["id"] = $id;
-////                            $_SESSION["loggedin"] = true;
-//                            $_POST["username"] = $username;
-//                            $_POST["id"] = $id;
-//                            $_POST["loggedin"] = true;
-//
-//                            //Redirect user to welcome page
-//                            header("location: homepage.php");
-//                            
-//                        }
-//                    }
-//
-//                }
-//
-//    }
-//}    
-//
-//
-//}
-
-
-?>
-
-<!doctype html>
-<!--<html lang="en">
+ <!doctype html>
+<html lang="en">
   <head>
-     Required meta tags 
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-     Bootstrap CSS 
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,600;1,800&display=swap" rel="stylesheet">
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>PHP login system!</title>
   </head>
   <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Php Login System</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-  <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="homepage.php">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="register.php">Register</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="login.php">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="logout.php">Logout</a>
-      </li>
+  <?php include('header.php');?>
 
-      
-     
-    </ul>
-  </div>
-</nav>
-
-<div class="container mt-4">
+<div class="container" style="margin-top:4%">
 <h3>Please Login Here:</h3>
 <hr>
 
 <form action="" method="post">
   <div class="form-group">
-    <label for="exampleInputEmail1">Username</label>
-    <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Username">
+    <label for="exampleInputEmail1">Enter Email:</label>
+    <input type="text" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Password">
+    <label for="exampleInputPassword1">Enter Password:</label>
+    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Password" required>
   </div>
+  <div class="input-group">
+				<button name="submit" class="btn btn-primary">Login</button>
+			</div>
   
-  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
 
 
 </div>
 
-     Optional JavaScript 
-     jQuery first, then Popper.js, then Bootstrap JS 
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <?php include('footer.php');?>
   </body>
-</html>-->
+</html> 

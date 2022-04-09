@@ -1,11 +1,18 @@
+<?php session_start();
+if(isset($_SESSION['id']))
+{
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,600;1,800&display=swap" rel="stylesheet">
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Document</title>
-</head>
+
 <style>
 
 /* Search Bar */
@@ -195,7 +202,9 @@
     }
 
 </style>
+</head>
 <body>
+<?php include('header.php');?>
     <div class="container">
         <div class="login-box">
             <h2>Your File Here</h2>
@@ -233,8 +242,12 @@
         View Uploaded Documents
     </a>
 </div>
-
-
-   
+<?php include('footer.php');?>
 </body>
 </html>
+<?php 
+}
+else{
+    echo '<script>alert("Session Expired! login to continue!"); window.location.href="index.php"</script>';
+}
+?>

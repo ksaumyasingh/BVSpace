@@ -1,7 +1,6 @@
-<?php 
-
-session_start();
-
+<?php session_start();
+if(isset($_SESSION['id']))
+{
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +20,7 @@ session_start();
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
   <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="homepage.php">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="register.php">Register</a>
@@ -40,8 +39,14 @@ session_start();
 </nav>
     <?php echo "<h1>Welcome </h1>"; ?>
     <a href="search.php">Search</a>
-    <a href="submitMaterial.html">studyMaterial</a>
+    <a href="submitMaterial.php">studyMaterial</a>
     <a href="display.php">Q&A Section</a>
    
 </body>
 </html>
+<?php 
+}
+else{
+    echo '<script>alert("Session Expired! login to continue!"); window.location.href="login.php"</script>';
+}
+?>
