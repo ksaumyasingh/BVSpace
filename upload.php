@@ -3,13 +3,14 @@ ini_set('error_reporting', 0);
 ini_set('display_errors', 0);
 include 'dbcon.php';
 session_start();
-$email=$_SESSION['id'];
-if(isset($_SESSION['id'])){
-    
-    if(isset($_POST['submit'])){
+$email = $_SESSION['id'];
+if (isset($_SESSION['id'])) {
+
+    if (isset($_POST['submit'])) {
         //$date = $_POST['date'];
         $username = $_POST['username'];
-        $subject = $_POST['subject']; 
+        $Branch = $_POST['Branch'];
+        $subject = $_POST['subject'];
         $title = $_POST['title'];
         $file = $_FILES['file'];
 
@@ -21,42 +22,38 @@ if(isset($_SESSION['id'])){
         $fileExt = explode('.', $fileName);
         $fileActualExt = strtolower(end($fileExt));
 
-        $allowed = array('pdf','jpg','png','jpeg','docx');
+        $allowed = array('pdf', 'jpg', 'png', 'jpeg', 'docx');
 
 
-        if(!in_array($fileActualExt, $allowed)){
+        if (!in_array($fileActualExt, $allowed)) {
 
             echo '<script>alert("You cannot upload this type of file!"); window.location.href="submitMaterial.php"</script>';
         }
 
-        if($fileError != 0)
-        {
+        if ($fileError != 0) {
             echo '<script>alert("Could not upload file"); window.location.href="submitMaterial.php"</script>';
             //throw new Exception("Could not upload file");
         }
 
-        if($fileSize > 1000000){
+        if ($fileSize > 1000000) {
             echo '<script>alert("Your file is too big"); window.location.href="submitMaterial.php"</script>';
             //throw new Exception("Your file is too big");
         }
 
-        $fileNameNew = uniqid('', true).".".$fileActualExt;
-        $fileDestination = 'uploads/'.$fileNameNew;
+        $fileNameNew = uniqid('', true) . "." . $fileActualExt;
+        $fileDestination = 'uploads/' . $fileNameNew;
         move_uploaded_file($filePath, $fileDestination);
 
-        $insertQuery = "insert into resources(UploadedBy,id , Subject, Title, Document) values('$username','$email','$subject', '$title', '$fileDestination')";
+        $insertQuery = "insert into resources(id ,Branch, Subject, Title, Document) values('$email','$Branch','$subject', '$title', '$fileDestination')";
 
         $queryResponse = mysqli_query($con, $insertQuery);
 
-        if($queryResponse) {
+        if ($queryResponse) {
             echo '<script>alert("File Uploaded Successfully"); window.location.href="submitMaterial.php"</script>';
-        }
-        else {
+        } else {
             echo "File not uploaded";
         }
-
     }
-}else{
+} else {
     echo '<script>alert("Session Expired! login to continue!"); window.location.href="index.php"</script>';
 }
-?>

@@ -3,8 +3,9 @@ if(isset($_SESSION['id']))
 {
 ?>
     <?php
-    $id=$_POST['answerID'];
-    $vote=$_POST['up'];
+    $id=$_GET['answerID'];
+    $vote=$_GET['up'];
+    $ques_id=$_GET['quesID'];
     echo $id." ".$vote;
     $vote=$vote+1;
     $mail= $_SESSION['emailId'];
@@ -31,6 +32,7 @@ if(isset($_SESSION['id']))
         $sql="update answer set upvote=$vote where ans_id=$id";
         if($con->query($sql) == true){
             echo '<script>alert("your like is counted"); window.location.href="display.php"</script>';
+            header("Location:displayanswer.php?value=".$ques_id);
         }
         else{
             echo "ERROR:$sql <br> $conn->error";
@@ -38,7 +40,9 @@ if(isset($_SESSION['id']))
     }
      else 
     {
-        echo '<script>alert("Already liked!"); window.location.href="display.php"</script>';
+        // echo '<script>alert("Already liked!"); window.location.href="display.php"</script>';
+        echo '<script>alert("Already liked!");</script>';
+        header("Location:displayanswer.php?value=".$ques_id); 
     }
     ?>
 <?php 

@@ -207,12 +207,22 @@ session_start();
                     COME JOIN US!
                     </h5>
 			    </div>
+            <?php if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==true)
+            {
+              echo "<h3>Welcome to BVSpace - $_SESSION[username] !</h3>";
+            }
+            else
+            {?>
+
+            
                 <div class="col-md-2 col-12">
                 <button type="button" class="btn btn-dark" style="padding-left:2em; padding-right:2em"><a href="login.php" style="text-decoration:none; color:white"> Login</a></button>
                 </div>
                 <div class="col-md-2 col-12" >
-                <button type="button" class="btn btn-dark" style="margin-left:2em; margin-right:2em;width: 110%;"><a href="register.php" style="text-decoration:none; color:white">Sign Up</a></button>
+                <button type="button" class="btn btn-dark" style="margin-left:2em; margin-right:2em; width: 153px;"><a href="register.php" style="text-decoration:none; color:white">Sign Up</a></button>
                 </div>
+            <?php
+            }?>
 		    </div>
 		</div>
             
@@ -273,7 +283,45 @@ Everyone contributing in their own way!
       </div>
     </div>
 
-    <?php include('footer.php');?>
+    <div style="background-color: #221f1f;
+
+  max-width: 121%;
+  width: 100%;
+  bottom: 0;
+  height: 37vh;
+  margin-top: 0%;
+  margin-left: 0%;>
+        <!-- <div class="container"> -->
+            <div class="row">
+                <div class="col-md-2 col-12">
+                    <img src="https://i.ibb.co/cgMV93W/BVSpace-logos-white.png" style="margin-right: 5%; width:100%;height:100%">
+                </div>
+                <div class="col-md-2 col-12" style="width:25em;text-align:center;">
+                    <b>
+                        <p style="color:white; padding-top:10%; margin-top:25px;margin-right: -20%;">Contact US: 000-111-0001
+                    </b>&nbsp
+
+
+                    <a href="#" style="text-decoration:none"><i class="fa fa-facebook-official" aria-hidden="true" style="color: white;padding-right: 1%;font-size: 30px;"></i>&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                    <a href="#" style="text-decoration:none"><i class="fa fa-instagram" aria-hidden="true" style="color: white;padding-right: 1%;font-size: 30px;"></i>&nbsp&nbsp&nbsp&nbsp</a>
+                    <a href="#" style="text-decoration:none"><i class="fa fa-twitter" aria-hidden="true" style="color: white;padding-right: 1%;font-size: 30px;"></i></a>
+                    </p>
+                </div>
+            </div>
+        <!-- </div> -->
+
+        <h4 style="
+                color: white;
+    font-family: 'Francois One', sans-serif;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    margin-top: -3%;
+    font-size: 1em;
+    margin-left: 23%;
+
+              ">Copyright 2022 Easy WebContent, Inc. All rights reserved. Proudly made in India.</h4>
+
+    </div>
     
 </body>
 </html>
