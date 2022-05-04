@@ -63,6 +63,11 @@ if(isset($_SESSION['id']))
                     text-align: center;
                     font-size: calc(1.275rem + .3vw);
                 }
+                
+                .nested_table td,th,tr
+                {
+                    background-color: none;
+                }
 
                 body {
                     /* width: 100%;
@@ -86,9 +91,9 @@ if(isset($_SESSION['id']))
                 }
 
                 .items {
-                    padding: 15px 35px;
-                    font-size: 19px;
-                    border-bottom: 0px solid rgba(255, 255, 255, 0.7);
+                    /* padding: 15px 35px;
+                    font-size: 15px; */
+                    /* border-bottom: 0px solid rgba(255, 255, 255, 0.7); */
                 }
 
                 .icons {
@@ -243,20 +248,20 @@ if(isset($_SESSION['id']))
                         ?>
                         
                         <tr class="table-rows" style="padding:0px;border-width: 0 0px">
-                            <td class="items"style="padding:0px;border-width: 0 0px">
+                            <td class="items" style="padding:0px;border-width: 0 0px">
                                 <table class="table table-bordered" style="border-width: 0 0px;border-collapse:collapse;border:none">
-                                    <tbody style="border-width: 0 0px">
-                                        <tr style="border-width: 0 0px">
-                                            <th style="padding:30px;border-width: 0 0px"> <?php  echo $res["ans"] ?></th>
+                                    <thead style="border-width: 0 0px">
+                                        <tr class="items" style="border-width: 0 0px">
+                                            <th class="items" style="padding:30px;border-width: 0 0px"> <?php  echo $res["ans"] ?></th>
                                         </tr>
-                                        <tr style="padding:0px;border-width: 0 0px">
+                                        <tr class="items" style="padding:0px;border-width: 0 0px">
                                             <!-- <th> <?php  echo $res["ques_id"] ?></th> -->
-                                            <th style="padding:0px;border-width: 0 0px">
+                                            <th class="items" style="padding:0px;border-width: 0 0px">
                                                 <table class="table table-bordered" style="border-collapse: collapse;border-width: 0 0px">
                                                     <tbody style="border-width: 0px 0px;color:#7b2f0e">
-                                                        <tr  style="color: #7b2f0e" style="font-size: 10px;boder:None;border-width: 0px 0px" >
-                                                            <td style="padding:0px;border-width: 0 0px">&nbsp &nbsp &nbsp<i class='far fa-calendar-alt'> </i><?php  echo " ".$res["date_posted"];?></td>
-                                                            <td style="padding:0px;border-width: 0 0px">
+                                                        <tr class="items" style="color: #7b2f0e" style="font-size: 10px;boder:None;border-width: 0px 0px" >
+                                                            <td class="items" style="padding:0px;border-width: 0 0px">&nbsp &nbsp &nbsp<i class='far fa-calendar-alt'> </i><?php  echo " ".$res["date_posted"];?></td>
+                                                            <td class="items" style="padding:0px;border-width: 0 0px">
                                                             <i class='fas fa-pen-square'></i>
                                                             <?php
                                                                 $i=$res["id"];
@@ -269,7 +274,7 @@ if(isset($_SESSION['id']))
                                                             ?>
                                                             </td>
                                                             <?php $upvote=$res["upvote"]?>
-                                                            <td  style="padding:0px;border-width: 0 0px">
+                                                            <td class="items" style="padding:0px;border-width: 0 0px">
                                                                 <?php
                                                                     $ansid=$res['ans_id'];
                                                                     $selectquery7= "SELECT * FROM liketable WHERE ans_id=$ansid AND id=$email";
@@ -289,7 +294,7 @@ if(isset($_SESSION['id']))
 
                                                                 <?php  echo $res["upvote"];?>
                                                             </td>
-                                                            <td style="padding:0px;border-width: 0 0px"><?php 
+                                                            <td class="items" style="padding:0px;border-width: 0 0px"><?php 
                                                             if($res["id"]==$email)
                                                                 {?>
                                                                     <a href="deleteans.php?answerID=<?php echo $res['ans_id']; ?>&quesID=<?php echo $res['ques_id']; ?>" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="material-icons" style="color:#7b2f0e" >delete_forever</i></a>
@@ -307,7 +312,7 @@ if(isset($_SESSION['id']))
                                                 </table>
                                             </th>
                                         </tr>
-                                    </tbodyS>
+                                    </thead>
                                 </table>
                             </td>
                         </tr>

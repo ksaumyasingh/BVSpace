@@ -87,8 +87,7 @@ if(isset($_POST['register'])){
 
           if(mysqli_query($conn,$insert) && sendMail($email,$v_code)){  //if data inserted successfully
             echo "<script>
-             alert('Welcome! Registration successful.
-             Go verify your email!');
+             alert('Welcome! Registration successful.Now,verify your account.');
              window.location.href='login.php';
               </script>";
 
@@ -152,8 +151,8 @@ mysqli_close($conn);
         /* background-color:#c6dc93; */
         background-image:url('https://t4.ftcdn.net/jpg/01/32/59/83/360_F_132598320_FQT5TvzHWP2x42CsdAoEPgQG47YyzPZ5.jpg');
         background-repeat: no-repeat;
-    background-size: 100% 100%;
-    color:white;
+        background-size: 100% 100%;
+        color:white;
       }
       .registerbtn {
         background-color: #04AA6D;
@@ -192,32 +191,32 @@ mysqli_close($conn);
           
               <div class="form-group " >
                 <label for="inputUsername"></label>
-                <input type="text" class="form-control" name="username" id="inputtext4" placeholder="Username" required>
+                <input type="text" class="form-control" name="username" id="inputtext4" placeholder="Username*" required>
               </div>
               <div class="form-group ">
                 <label for="inputPassword4"></label>
-                <input type="password" class="form-control" name ="password" id="inputPassword4" placeholder="Password" required>
+                <input type="password" class="form-control" name ="password" id="inputPassword4" placeholder="Password*" required>
               </div>
             <!-- </div> -->
             <div class="form-group ">
                 <label for="inputPassword4"></label>
-                <input type="password" class="form-control" name ="cpassword" id="inputPassword" placeholder="Confirm Password" required>
+                <input type="password" class="form-control" name ="cpassword" id="inputPassword" placeholder="Confirm Password*" required>
               </div>
               <div class="form-group ">
                 <label for="inputEmail4"></label>
-                <input type="email" class="form-control" name="email" id="inputEmail4" placeholder="Email" required>
+                <input type="email" class="form-control" name="email" id="inputEmail4" placeholder="Email*" required>
               </div>
             <div class="form-group " >
-              <label for="inputstartyear">Start Year of BTech:</label>
+              <label for="inputstartyear">Start Year of BTech*:</label>
               <input type="date" class="form-control" name="startYear" id="inputstartyear" placeholder="Start Year of BTech" style="display:inline;width: 24%; margin-left: 10%;" required>
             </div>
             <div class="form-group ">
-              <label for="inputendyear">End Year of BTech:</label>
+              <label for="inputendyear">End Year of BTech*:</label>
               <input type="date" class="form-control" name="endYear" id="inputendyear" placeholder="Start Year of BTech" style="display:inline;width: 24%; margin-left: 11%;"  required>
             </div>
             <div class="form-group dropdown">
-                <label for="Branch">Choose your branch:</label>
-                    <select style="margin-left: 81px;padding:9px" name="Branch">
+                <label for="Branch" >Choose your branch*:</label>
+                    <select style="margin-left: 80px;padding:9px" name="Branch" required>
                         <option value="CS">CS</option>
                         <option value="IT">IT</option>
                         <option value="ECE">ECE</option>
@@ -227,7 +226,7 @@ mysqli_close($conn);
             </div>  
             <div class="form-group ">
                 <label for="inputlinkedin"></label>
-                <input type="text" class="form-control" name ="linkedin" id="linkedin" placeholder="Linkedin" required>
+                <input type="text" class="form-control" name ="linkedin" id="linkedin" placeholder="Linkedin*" required>
               </div>
               <div class="form-group ">
                 <label for="inputSummerIntern"></label>
@@ -244,6 +243,7 @@ mysqli_close($conn);
             
               <hr>
                 <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+                
 
                 <button type="submit" class="registerbtn" name="register">Register</button>
             <div class="container signin">
@@ -262,41 +262,41 @@ mysqli_close($conn);
   </body>
   <div style="background-color: #221f1f;
 
-max-width: 121%;
-width: 100%;
-bottom: 0;
-height: 37vh;
-margin-top: 4%;
-margin-left: 0%;>
-      <!-- <div class="container"> -->
-          <div class="row">
-              <div class="col-md-2 col-12">
-                  <img src="https://i.ibb.co/cgMV93W/BVSpace-logos-white.png" style="margin-right: 5%; width:100%;height:100%">
-              </div>
-              <div class="col-md-2 col-12" style="width:25em;text-align:center;">
-                  <b>
-                      <p style="color:white; padding-top:10%; margin-top:25px;margin-right: -20%;">Contact US: 000-111-0001
-                  </b>&nbsp
+  max-width: 121%;
+  width: 100%;
+  bottom: 0;
+  height: 37vh;
+  margin-top: 7%;
+  margin-left: 0%;>
+        <!-- <div class="container"> -->
+            <div class="row">
+                <div class="col-md-2 col-12">
+                    <img src="https://i.ibb.co/cgMV93W/BVSpace-logos-white.png" style="margin-right: 5%; width:100%;height:100%">
+                </div>
+                <div class="col-md-2 col-12" style="width:25em;text-align:center;">
+                    <b>
+                        <p style="color:white; padding-top:10%; margin-top:25px;margin-right: -20%;">Contact US: 000-111-0001
+                    </b>&nbsp
 
 
-                  <a href="#" style="text-decoration:none"><i class="fa fa-facebook-official" aria-hidden="true" style="color: white;padding-right: 1%;font-size: 30px;"></i>&nbsp&nbsp&nbsp&nbsp&nbsp</a>
-                  <a href="#" style="text-decoration:none"><i class="fa fa-instagram" aria-hidden="true" style="color: white;padding-right: 1%;font-size: 30px;"></i>&nbsp&nbsp&nbsp&nbsp</a>
-                  <a href="#" style="text-decoration:none"><i class="fa fa-twitter" aria-hidden="true" style="color: white;padding-right: 1%;font-size: 30px;"></i></a>
-                  </p>
-              </div>
-          </div>
-      <!-- </div> -->
+                    <a href="#" style="text-decoration:none"><i class="fa fa-facebook-official" aria-hidden="true" style="color: white;padding-right: 1%;font-size: 30px;"></i>&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                    <a href="#" style="text-decoration:none"><i class="fa fa-instagram" aria-hidden="true" style="color: white;padding-right: 1%;font-size: 30px;"></i>&nbsp&nbsp&nbsp&nbsp</a>
+                    <a href="#" style="text-decoration:none"><i class="fa fa-twitter" aria-hidden="true" style="color: white;padding-right: 1%;font-size: 30px;"></i></a>
+                    </p>
+                </div>
+            </div>
+        <!-- </div> -->
 
-      <h4 style="
-              color: white;
-  font-family: 'Francois One', sans-serif;
-  font-weight: 500;
-  letter-spacing: 2.5px;
-  margin-top: -3%;
-  font-size: 1em;
-  margin-left: 23%;
+        <h4 style="
+                color: white;
+    font-family: 'Francois One', sans-serif;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    margin-top: -3%;
+    font-size: 1em;
+    margin-left: 23%;
 
-            ">Copyright 2022 Easy WebContent, Inc. All rights reserved. Proudly made in India.</h4>
+              ">Copyright 2022 Easy WebContent, Inc. All rights reserved. Proudly made in India.</h4>
 
-  </div>
+    </div>
 </html>

@@ -7,7 +7,6 @@ $squery="DELETE FROM resources WHERE `S.No`=$sno";
 if($con->query($squery) == true)
 {
     header("Location:branchWisePreview.php");
-    header("Location:previewMaterial.php?search=".$search);
 }
 else
 {

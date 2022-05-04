@@ -14,7 +14,6 @@ if(isset($_SESSION['id']))
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,600;1,800&display=swap" rel="stylesheet">
     <!-- linkedin -->
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="tablecss.css">
     <title>StudentInfo</title>
@@ -51,7 +50,7 @@ if(isset($_SESSION['id']))
             <div class="col-md-12">
                 <div class="card mt-4" style="padding:0px">
                     <div class="card-body" >
-                        <table  class="table table-bordered" >
+                        <table  class="table table-bordered" style="font-size:50%" >
                             <thead>
                                
                                 <tr class="header-row">
@@ -179,50 +178,50 @@ if(isset($_SESSION['id']))
         });
     </script>
 
-<div style="background-color: #221f1f;
-
-max-width: 121%;
-width: 100%;
-bottom: 0;
-height: 37vh;
-margin-top: 4%;
-margin-left: 0%;>
-      <!-- <div class="container"> -->
-          <div class="row">
-              <div class="col-md-2 col-12">
-                  <img src="https://i.ibb.co/cgMV93W/BVSpace-logos-white.png" style="margin-right: 5%; width:100%;height:100%">
-              </div>
-              <div class="col-md-2 col-12" style="width:25em;text-align:center;">
-                  <b>
-                      <p style="color:white; padding-top:10%; margin-top:25px;margin-right: -20%;">Contact US: 000-111-0001
-                  </b>&nbsp
-
-
-                  <a href="#" style="text-decoration:none"><i class="fa fa-facebook-official" aria-hidden="true" style="color: white;padding-right: 1%;font-size: 30px;"></i>&nbsp&nbsp&nbsp&nbsp&nbsp</a>
-                  <a href="#" style="text-decoration:none"><i class="fa fa-instagram" aria-hidden="true" style="color: white;padding-right: 1%;font-size: 30px;"></i>&nbsp&nbsp&nbsp&nbsp</a>
-                  <a href="#" style="text-decoration:none"><i class="fa fa-twitter" aria-hidden="true" style="color: white;padding-right: 1%;font-size: 30px;"></i></a>
-                  </p>
-              </div>
-          </div>
-      <!-- </div> -->
-
-      <h4 style="
-              color: white;
-  font-family: 'Francois One', sans-serif;
-  font-weight: 500;
-  letter-spacing: 2.5px;
-  margin-top: -3%;
-  font-size: 1em;
-  margin-left: 23%;
-
-            ">Copyright 2022 Easy WebContent, Inc. All rights reserved. Proudly made in India.</h4>
-
-  </div>  
+    
 
 
 
 </body>
+<div style="background-color: #221f1f;
 
+  max-width: 121%;
+  width: 100%;
+  bottom: 0;
+  height: 37vh;
+  margin-top: 7%;
+  margin-left: 0%;>
+        <!-- <div class="container"> -->
+            <div class="row">
+                <div class="col-md-2 col-12">
+                    <img src="https://i.ibb.co/cgMV93W/BVSpace-logos-white.png" style="margin-right: 5%; width:100%;height:100%">
+                </div>
+                <div class="col-md-2 col-12" style="width:25em;text-align:center;">
+                    <b>
+                        <p style="color:white; padding-top:10%; margin-top:25px;margin-right: -20%;">Contact US: 000-111-0001
+                    </b>&nbsp
+
+
+                    <a href="#" style="text-decoration:none"><i class="fa fa-facebook-official" aria-hidden="true" style="color: white;padding-right: 1%;font-size: 30px;"></i>&nbsp&nbsp&nbsp&nbsp&nbsp</a>
+                    <a href="#" style="text-decoration:none"><i class="fa fa-instagram" aria-hidden="true" style="color: white;padding-right: 1%;font-size: 30px;"></i>&nbsp&nbsp&nbsp&nbsp</a>
+                    <a href="#" style="text-decoration:none"><i class="fa fa-twitter" aria-hidden="true" style="color: white;padding-right: 1%;font-size: 30px;"></i></a>
+                    </p>
+                </div>
+            </div>
+        <!-- </div> -->
+
+        <h4 style="
+                color: white;
+    font-family: 'Francois One', sans-serif;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    margin-top: -3%;
+    font-size: 1em;
+    margin-left: 23%;
+
+              ">Copyright 2022 Easy WebContent, Inc. All rights reserved. Proudly made in India.</h4>
+
+    </div>
 </html>
 <?php 
 }
